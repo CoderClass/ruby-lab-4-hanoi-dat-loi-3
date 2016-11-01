@@ -5,8 +5,11 @@
 
 <div class="container">
   <%= form_for Message.new, :url => room_messages_path(params[:room_id]) do |i|%>
-    <%= i.text_field :username, placeholder: "Username" %>
-    <%= i.text_field :content, placeholder: "Message" %>
+
+    <% unless session[:username] %>
+      <%= i.text_field :username, placeholder: "Username" %>
+      <% end %>
+    <%= i.text_field :content, class: "form-control", placeholder: "Message" %><br />
     <%= i.submit "Send", class: "btn btn-success" %>
   <% end %>
 </div>
