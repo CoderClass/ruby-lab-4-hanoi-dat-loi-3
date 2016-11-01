@@ -5,9 +5,9 @@
     <% end %>
   </div>
 
-  <div class="container">
-    <%= form_for Room.new do |i|%>
-      <%= i.text_field :name %>
-      <%= i.submit "Create Room", class: "btn btn-success" %>
-    <% end %>
-  </div>
+<div class="container">
+  <%= form_for Room.new, :url => room_messages_path(@article) do |i|%>
+    <%= i.text_field :name %>
+    <%= i.submit "Create Room", class: "btn btn-success" %>
+  <% end %>
+</div>
