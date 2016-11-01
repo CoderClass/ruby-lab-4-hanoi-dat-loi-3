@@ -1,7 +1,9 @@
 <h1>Hello wold</h1>
+<div class="messages">
 <% @messages.each do |m| %>
-  <p><%= m.username %> : <%= m.content %></p>
+  <p class="message-box"><%= m.username %> : <%= m.content %></p>
 <% end %>
+</div>
 
 <div class="container">
   <%= form_for Message.new, :url => room_messages_path(params[:room_id]) do |i|%>

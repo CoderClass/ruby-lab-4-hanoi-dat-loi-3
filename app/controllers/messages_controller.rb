@@ -1,6 +1,10 @@
 class MessagesController < ApplicationController
   def index
     @messages = Message.where(room_id: params[:room_id])
+    respond_to do |format|
+      format.json {render json: @messages}
+      format.html {@messages}
+    end
   end
 
   def create
