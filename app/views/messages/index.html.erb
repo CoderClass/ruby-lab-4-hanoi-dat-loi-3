@@ -1,0 +1,12 @@
+<h1>Hello wold</h1>
+<% @messages.each do |m| %>
+  <p><%= m.username %> : <%= m.content %></p>
+<% end %>
+
+<div class="container">
+  <%= form_for Message.new, :url => room_messages_path(params[:room_id]) do |i|%>
+    <%= i.text_field :username, placeholder: "Username" %>
+    <%= i.text_field :content, placeholder: "Message" %>
+    <%= i.submit "Send", class: "btn btn-success" %>
+  <% end %>
+</div>
