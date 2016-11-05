@@ -1,7 +1,7 @@
 <h1>Hello wold</h1>
 <div class="messages">
 <% @messages.each do |m| %>
-  <p class="message-box"><%= m.username %> : <%= m.content %></p>
+  <p class="message"><%= m.username %> : <%= m.content %></p>
 <% end %>
 </div>
 
@@ -15,3 +15,19 @@
     <%= i.submit "Send", class: "btn btn-success" %>
   <% end %>
 </div>
+
+
+<script type="text/javascript" charset="utf-8>">
+  function updateMessages(){
+      $.getJSON(window.location.pathname + ".json", function(messages)  {
+        e = $('.messages')
+        e.html('')
+        for (i in messages){
+          message = messages[i]
+          e.append("<div class='message'><strong>" + message.username + ":</strong> " + message.content + "</div>")
+      }
+    })
+  }
+
+  setInterval(updateMessages, 3000)
+</script>

@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
   def index
     @messages = Message.where(room_id: params[:room_id])
+
     respond_to do |format|
       format.json {render json: @messages}
       format.html {@messages}
@@ -29,5 +30,9 @@ class MessagesController < ApplicationController
 
   def message_params
     params.require(:message).permit(:username, :content)
+  end
+
+  def load_room
+    @room = Room.find params[:room_id]
   end
 end
