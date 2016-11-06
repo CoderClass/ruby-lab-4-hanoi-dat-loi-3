@@ -5,8 +5,8 @@ class RoomsController < ApplicationController
       flash[:success] = "You've made a room!"
       redirect_to root_path
     else
-      flash[:error] = "Unable to create room."
-      render 'new'
+      flash[:error] = "Error. Could not create room."
+      redirect_to root_path
     end
   end
 
@@ -21,6 +21,6 @@ class RoomsController < ApplicationController
   private
 
   def room_params
-    params.require(:room).permit(:name)
+    params.require(:room).permit(:name, :room_id)
   end
 end

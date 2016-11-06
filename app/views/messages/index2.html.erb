@@ -1,14 +1,12 @@
 <h1>Hello wold</h1>
   <div class="messages">
   <% @messages.each do |m| %>
-      <div class="message">
-        <strong><%= m.username %>:</strong> <%= m.content %>
-      </div>
+      <p><strong><%= m.username %>:</strong> <%= m.content %></p>
   <% end %>
   </div>
 
   <div class="container">
-    <%= form_for [@room, Message.new] do |i|%>
+    <% form_for Message.new, :url => room_messages_path(params[:room_id]) %>
       <% unless session[:username] %>
         <%= i.text_field :username, placeholder: "Username" %>
         <% end %>
